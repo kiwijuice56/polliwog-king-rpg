@@ -1,0 +1,10 @@
+class_name Event
+extends Node
+
+enum {
+	BATTLE_STARTED,
+	PREATTACK,
+	POSTATTACK,
+	DAMAGE_TAKEN,
+	DAMAGE_DEALT
+}

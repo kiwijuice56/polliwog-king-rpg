@@ -1,0 +1,76 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Node",
+"class": "Action",
+"language": "GDScript",
+"path": "res://main/action/action.gd"
+}, {
+"base": "Resource",
+"class": "ActionCall",
+"language": "GDScript",
+"path": "res://main/action/action_call.gd"
+}, {
+"base": "Action",
+"class": "Counter",
+"language": "GDScript",
+"path": "res://main/action/counter/counter.gd"
+}, {
+"base": "Node",
+"class": "Event",
+"language": "GDScript",
+"path": "res://main/action/event.gd"
+}, {
+"base": "Node",
+"class": "Fighter",
+"language": "GDScript",
+"path": "res://main/fighter/fighter.gd"
+}, {
+"base": "Node",
+"class": "Main",
+"language": "GDScript",
+"path": "res://main/main.gd"
+}, {
+"base": "Node",
+"class": "TurnCycle",
+"language": "GDScript",
+"path": "res://main/turn_cycle/turn_cycle.gd"
+} ]
+_global_script_class_icons={
+"Action": "",
+"ActionCall": "",
+"Counter": "",
+"Event": "",
+"Fighter": "",
+"Main": "",
+"TurnCycle": ""
+}
+
+[application]
+
+config/name="polliwog-king-rpg"
+run/main_scene="res://main/Main.tscn"
+config/icon="res://icon.png"
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"

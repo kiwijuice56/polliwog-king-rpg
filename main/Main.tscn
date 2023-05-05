@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://main/main.gd" type="Script" id=1]
+[ext_resource path="res://main/turn_cycle/turn_cycle.gd" type="Script" id=2]
+[ext_resource path="res://main/fighter/pixie/Pixie.tscn" type="PackedScene" id=3]
+[ext_resource path="res://main/action/counter/counter.gd" type="Script" id=4]
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+
+[node name="TurnCycle" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="PlayerParty" type="Node" parent="."]
+
+[node name="Pixie" parent="PlayerParty" instance=ExtResource( 3 )]
+display_name = "P_Pixie"
+
+[node name="Counter" parent="PlayerParty/Pixie/Actions" index="0"]
+script = ExtResource( 4 )
+
+[node name="EnemyParty" type="Node" parent="."]
+
+[node name="Pixie" parent="EnemyParty" instance=ExtResource( 3 )]
+display_name = "E_Pixie"
+
+[node name="Counter" parent="EnemyParty/Pixie/Actions" index="0"]
+script = ExtResource( 4 )
+
+[editable path="PlayerParty/Pixie"]
+[editable path="EnemyParty/Pixie"]
