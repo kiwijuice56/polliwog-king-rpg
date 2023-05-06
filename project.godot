@@ -12,45 +12,57 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Action",
 "language": "GDScript",
-"path": "res://main/action/action.gd"
+"path": "res://main/combat/action/action.gd"
 }, {
 "base": "Resource",
 "class": "ActionCall",
 "language": "GDScript",
-"path": "res://main/action/action_call.gd"
-}, {
-"base": "Action",
-"class": "Counter",
-"language": "GDScript",
-"path": "res://main/action/counter/counter.gd"
+"path": "res://main/combat/action_call/action_call.gd"
 }, {
 "base": "Node",
 "class": "Event",
 "language": "GDScript",
-"path": "res://main/action/event.gd"
+"path": "res://main/combat/event/event.gd"
 }, {
-"base": "Node",
+"base": "Reference",
 "class": "Fighter",
 "language": "GDScript",
-"path": "res://main/fighter/fighter.gd"
+"path": "res://main/lobby/selectable/fighter/fighter.gd"
 }, {
 "base": "Node",
 "class": "Main",
 "language": "GDScript",
 "path": "res://main/main.gd"
 }, {
+"base": "Node2D",
+"class": "PartyOrganizer",
+"language": "GDScript",
+"path": "res://main/lobby/party_organizer/party_organizer.gd"
+}, {
+"base": "Area2D",
+"class": "Platform",
+"language": "GDScript",
+"path": "res://main/lobby/party_organizer/platform/platform.gd"
+}, {
+"base": "Area2D",
+"class": "Selectable",
+"language": "GDScript",
+"path": "res://main/lobby/selectable/selectable.gd"
+}, {
 "base": "Node",
 "class": "TurnCycle",
 "language": "GDScript",
-"path": "res://main/turn_cycle/turn_cycle.gd"
+"path": "res://main/combat/turn_cycle/turn_cycle.gd"
 } ]
 _global_script_class_icons={
 "Action": "",
 "ActionCall": "",
-"Counter": "",
 "Event": "",
 "Fighter": "",
 "Main": "",
+"PartyOrganizer": "",
+"Platform": "",
+"Selectable": "",
 "TurnCycle": ""
 }
 
@@ -60,9 +72,46 @@ config/name="polliwog-king-rpg"
 run/main_scene="res://main/Main.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=280
+window/size/height=160
+window/stretch/mode="2d"
+window/stretch/aspect="expand"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": false,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
+
+[layer_names]
+
+2d_physics/layer_1="platform"
+2d_physics/layer_2="fighter"
+2d_physics/layer_3="selectable"
 
 [physics]
 
@@ -73,4 +122,4 @@ common/enable_pause_aware_picking=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"
+quality/dynamic_fonts/use_oversampling=false

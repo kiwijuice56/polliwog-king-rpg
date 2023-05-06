@@ -1,31 +1,40 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://main/main.gd" type="Script" id=1]
-[ext_resource path="res://main/turn_cycle/turn_cycle.gd" type="Script" id=2]
-[ext_resource path="res://main/fighter/pixie/Pixie.tscn" type="PackedScene" id=3]
-[ext_resource path="res://main/action/counter/counter.gd" type="Script" id=4]
+[ext_resource path="res://main/combat/turn_cycle/turn_cycle.gd" type="Script" id=2]
+[ext_resource path="res://main/ui/background.png" type="Texture" id=3]
+[ext_resource path="res://main/lobby/party_organizer/party_organizer.gd" type="Script" id=4]
+[ext_resource path="res://main/lobby/selectable/fighter/Fighter.tscn" type="PackedScene" id=5]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 
-[node name="TurnCycle" type="Node" parent="."]
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( -1, -20 )
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Lobby" type="Node2D" parent="."]
+
+[node name="PartyOrganizer" type="Node2D" parent="Lobby"]
+visible = false
+position = Vector2( 11, 35 )
+script = ExtResource( 4 )
+
+[node name="Combat" type="Node2D" parent="."]
+
+[node name="TurnCycle" type="Node" parent="Combat"]
 script = ExtResource( 2 )
 
-[node name="PlayerParty" type="Node" parent="."]
+[node name="PlayerParty" type="Node2D" parent="Combat"]
+position = Vector2( 35, 99 )
 
-[node name="Pixie" parent="PlayerParty" instance=ExtResource( 3 )]
-display_name = "P_Pixie"
+[node name="Fighter" parent="Combat/PlayerParty" instance=ExtResource( 5 )]
 
-[node name="Counter" parent="PlayerParty/Pixie/Actions" index="0"]
-script = ExtResource( 4 )
+[node name="Fighter2" parent="Combat/PlayerParty" instance=ExtResource( 5 )]
+position = Vector2( 32, 0 )
 
-[node name="EnemyParty" type="Node" parent="."]
+[node name="Fighter3" parent="Combat/PlayerParty" instance=ExtResource( 5 )]
+position = Vector2( 64, 0 )
 
-[node name="Pixie" parent="EnemyParty" instance=ExtResource( 3 )]
-display_name = "E_Pixie"
-
-[node name="Counter" parent="EnemyParty/Pixie/Actions" index="0"]
-script = ExtResource( 4 )
-
-[editable path="PlayerParty/Pixie"]
-[editable path="EnemyParty/Pixie"]
+[node name="EnemyParty" type="Node2D" parent="Combat"]

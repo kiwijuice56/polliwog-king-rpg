@@ -1,11 +1,12 @@
 class_name Fighter
-extends Node
+extends Selectable
 
 export var display_name: String
 export var init_hp: int
 export var atk: int
 
 var hp: int
+
 var turn_cycle: Node
 
 func _ready() -> void:
